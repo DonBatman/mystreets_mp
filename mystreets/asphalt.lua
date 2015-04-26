@@ -1,23 +1,58 @@
 -- Asphalt block
 	minetest.register_node("mystreets:asphalt", {
 		description = "Asphalt",
-		tile_images = {"mystreets_asphalt.png"},
+		tile_images = {"mystreets_asphalt3.png"},
 		drawtype = "normal",
+		paramtype = "light",
 		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
+	minetest.register_node("mystreets:asphalt2", {
+		description = "Asphalt",
+		tile_images = {"mystreets_asphalt2.png"},
+		drawtype = "normal",
+		paramtype = "light",
+		drop = "mystreets:asphalt",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+	minetest.register_node("mystreets:asphalt1", {
+		description = "Asphalt",
+		tile_images = {"mystreets_asphalt1.png"},
+		drawtype = "normal",
+		paramtype = "light",
+		drop = "mystreets:asphalt",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
 minetest.register_alias("asphalt", "mystreets:asphalt")
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt2"})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt2"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt1"})
+	end,
+})
 
 -- Asphalt block with center dashed line
 	minetest.register_node("mystreets:asphalt_center_dashed", {
 		description = "Asphalt with center dashed line",
 		tile_images = {
-			"mystreets_asphalt_center_dashed.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt_center_dashed.png",
-			"mystreets_asphalt_center_dashed.png"
+			"mystreets_asphalt3.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_dashed_straight.png"
 		},
 		drawtype = "normal",
 		paramtype = "light",
@@ -25,42 +60,193 @@ minetest.register_alias("asphalt", "mystreets:asphalt")
 		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
+	minetest.register_node("mystreets:asphalt_center_dashed2", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt2.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_dashed_straight.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+	minetest.register_node("mystreets:asphalt_center_dashed1", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt1.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_dashed_straight.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_dashed_straight.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_dashed"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_dashed2", param2= node.param2})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_dashed2"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_dashed1", param2= node.param2})
+	end,
+})
 
 -- Asphalt block with center solid line
+
 	minetest.register_node("mystreets:asphalt_center_solid", {
-	description = "Asphalt with center solid line",
-	tile_images = {
-			"mystreets_asphalt_center_solid.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt_center_solid.png",
-			"mystreets_asphalt_center_solid.png"
-	},
-	drawtype = "normal",
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {cracky = 1},
-	sounds = default.node_sound_stone_defaults(),
+		description = "Asphalt with center solid line",
+		tile_images = {
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
 	})
+	minetest.register_node("mystreets:asphalt_center_solid2", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_straight.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+	minetest.register_node("mystreets:asphalt_center_solid1", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_straight.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_straight.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_solid"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid2", param2= node.param2})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_solid2"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid1", param2= node.param2})
+	end,
+})
+
+
+
+
 
 -- Asphalt block with center solid dashed line
-	minetest.register_node("mystreets:asphalt_center_solid_dashed", {
-	description = "Asphalt with center solid dashed line",
-	tile_images = {
-			"mystreets_asphalt_center_solid_dashed.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt.png",
-			"mystreets_asphalt_center_solid_dashed.png^[transformR180",
-			"mystreets_asphalt_center_solid_dashed.png"
-	},
-	drawtype = "normal",
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {cracky = 1},
-	sounds = default.node_sound_stone_defaults(),
+
+minetest.register_node("mystreets:asphalt_center_solid_dashed", {
+		description = "Asphalt with center solid dashed",
+		tile_images = {
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt3.png^mystreets_line_yellow_solid_dashed.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
 	})
+minetest.register_node("mystreets:asphalt_center_solid_dashed2", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt2.png^mystreets_line_yellow_solid_dashed.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+minetest.register_node("mystreets:asphalt_center_solid_dashed1", {
+		description = "Asphalt with center dashed line",
+		tile_images = {
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_dashed.png",
+			"mystreets_asphalt1.png^mystreets_line_yellow_solid_dashed.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1, not_in_creative_inventory = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_solid_dashed"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_dashed2", param2= node.param2})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt_center_solid_dashed2"},
+	interval = 86400.0,
+	chance = 20,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_dashed1", param2= node.param2})
+	end,
+})
+
 
 -- Asphalt block with center solid double line
 	minetest.register_node("mystreets:asphalt_center_solid_double", {
