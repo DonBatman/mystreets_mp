@@ -23,13 +23,73 @@ minetest.register_craft({
 minetest.register_node("myconcrete:concrete", {
 	description = "Concrete",
 	drawtype = "normal",
-	tiles = {"myconcrete_concrete.png"},
+	tiles = {"myconcrete_concrete4.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {cracky=1},
 	stack_max = 250,
 	sounds = default.node_sound_stone_defaults(),
 
+})
+minetest.register_node("myconcrete:concrete3", {
+	description = "Concrete",
+	drawtype = "normal",
+	tiles = {"myconcrete_concrete3.png"},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drop = "myconcrete:concrete",
+	groups = {cracky=1, not_in_creative_inventory = 1},
+	stack_max = 250,
+	sounds = default.node_sound_stone_defaults(),
+
+})
+minetest.register_node("myconcrete:concrete2", {
+	description = "Concrete",
+	drawtype = "normal",
+	tiles = {"myconcrete_concrete2.png"},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drop = "myconcrete:concrete",
+	groups = {cracky=1, not_in_creative_inventory = 1},
+	stack_max = 250,
+	sounds = default.node_sound_stone_defaults(),
+
+})
+minetest.register_node("myconcrete:concrete1", {
+	description = "Concrete",
+	drawtype = "normal",
+	tiles = {"myconcrete_concrete1.png"},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drop = "myconcrete:concrete",
+	groups = {cracky=1, not_in_creative_inventory = 1},
+	stack_max = 250,
+	sounds = default.node_sound_stone_defaults(),
+
+})
+minetest.register_abm({
+	nodenames = {"myconcrete:concrete"},
+	interval = 180.0,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "myconcrete:concrete3"})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"myconcrete:concrete3"},
+	interval = 180.0,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "myconcrete:concrete2"})
+	end,
+})
+minetest.register_abm({
+	nodenames = {"myconcrete:concrete2"},
+	interval = 180.0,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "myconcrete:concrete1"})
+	end,
 })
 --Craft
 minetest.register_craft({
