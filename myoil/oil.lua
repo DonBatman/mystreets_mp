@@ -65,12 +65,36 @@ minetest.register_node("myoil:oil_source", {
 --------------------------------------------------------------------------------
 --Oil Barrel
 --------------------------------------------------------------------------------
+--empty
+minetest.register_node("myoil:barrel_empty", {
+	description = "Oil Barrel",
+	drawtype = "mesh",
+	mesh = "myoil_cylinder.obj",
+	tiles = {"myoil_oil_barrel_mesh.png"},
+	stack_max = 1,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {oddly_breakable_by_hand=2},
+	sounds = default.node_sound_wood_defaults(),
+	on_place = minetest.rotate_node,
+})
+--Craft
+minetest.register_craft({
+		output = "myoil:barrel_empty 1",
+		recipe = {
+			{"default:steel_ingot","","default:steel_ingot"},
+			{"default:steel_ingot","","default:steel_ingot"},
+			{"default:steel_ingot","default:steel_ingot","default:steel_ingot"},
+			}
+	})
 
+--full
 minetest.register_node("myoil:oil_barrel", {
 	description = "Oil Barrel",
 	drawtype = "mesh",
 	mesh = "myoil_cylinder.obj",
 	tiles = {"myoil_oil_barrel_mesh.png"},
+	stack_max = 1,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {oddly_breakable_by_hand=2},
@@ -82,7 +106,7 @@ minetest.register_craft({
 		output = "myoil:oil_barrel 1",
 		recipe = {
 			{"myoil:bucket_oil","myoil:bucket_oil","myoil:bucket_oil"},
-			{"myoil:bucket_oil","myoil:bucket_oil","myoil:bucket_oil"},
+			{"myoil:bucket_oil","myoil:oil_barrel_empty","myoil:bucket_oil"},
 			{"myoil:bucket_oil","myoil:bucket_oil","myoil:bucket_oil"},
 			}
 	})
@@ -118,6 +142,7 @@ minetest.register_node("myoil:tar_barrel", {
 	drawtype = "mesh",
 	mesh = "myoil_cylinder.obj",
 	tiles = {"myoil_tar_barrel_mesh.png"},
+	stack_max = 1,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {oddly_breakable_by_hand=2},
@@ -129,7 +154,7 @@ minetest.register_craft({
 		output = "myoil:tar_barrel 1",
 		recipe = {
 			{"myoil:tar","myoil:tar","myoil:tar"},
-			{"myoil:tar","myoil:tar","myoil:tar"},
+			{"myoil:tar","myoil:barrel_empty","myoil:tar"},
 			{"myoil:tar","myoil:tar","myoil:tar"},
 			}
 	})
@@ -179,50 +204,14 @@ minetest.register_craft({
 ----------------------------------------------------------------------------
 --Turn Oil to Tar when near lava
 ----------------------------------------------------------------------------
-default.cool_lava_source = function(pos)
-	minetest.set_node(pos, {name="myoil:tar"})
-	minetest.sound_play("default_cool_lava", {pos = pos,  gain = 0.25})
-end
 
-default.cool_lava_flowing = function(pos)
-	minetest.set_node(pos, {name="myoil:tar"})
-	minetest.sound_play("default_cool_lava", {pos = pos,  gain = 0.25})
-end
 minetest.register_abm({
-	nodenames = {"myoil:oil_flowing"},
-	neighbors = {"default:lava_source"},
+	nodenames = {"myoil:oil_flowing","myoil:oil_source"},
+	neighbors = {"default:lava_flowing","default:lava_source"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_flowing(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos,{name = "myoil:tar"})
 	end,
 })
 
-minetest.register_abm({
-	nodenames = {"myoil:oil_flowing"},
-	neighbors = {"default:lava_flowing"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_source(pos, node, active_object_count, active_object_count_wider)
-	end,
-})
-minetest.register_abm({
-	nodenames = {"myoil:oil_source"},
-	neighbors = {"default:lava_source"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_flowing(pos, node, active_object_count, active_object_count_wider)
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"myoil:oil_source"},
-	neighbors = {"default:lava_flowing"},
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		default.cool_lava_source(pos, node, active_object_count, active_object_count_wider)
-	end,
-})
