@@ -8,3 +8,23 @@ minetest.register_craft({
 	output = "default:sand",
 	recipe ={"default:gravel"},
 })
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:desert_gravel",
+	recipe ={"default:desert_cobble"},
+})
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:desert_sand",
+	recipe ={"default:desert_stone"},
+})
+minetest.register_node ("mycobble:desert_gravel",{
+	description = "Desert Gravel",
+	tiles = {"mycobble_desert_gravel.png"},
+	is_ground_content = true,
+	groups = {crumbly=2, falling_node=1},
+	sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_gravel_footstep", gain=0.5},
+		dug = {name="default_gravel_footstep", gain=1.0},
+	}),
+})
