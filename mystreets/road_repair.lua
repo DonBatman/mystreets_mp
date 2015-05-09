@@ -1,6 +1,5 @@
 
 
-
 minetest.register_node("mystreets:road_tar", {
 	description = "Road Tar",
 	inventory_image = "mystreets_road_tar.png",
@@ -47,6 +46,34 @@ local asphalt_tab = {
 {"mystreets:asphalt_icorner2","mystreets:asphalt_icorner"},
 {"mystreets:pothole","mystreets:asphalt"},
 {"mystreets:potholeb","mystreets:asphalt"},
+{"mystreets:ramp_asphalt1","mystreets:ramp_asphalt"},
+{"mystreets:ramp_asphalt2","mystreets:ramp_asphalt"},
+{"mystreets:ramp_asphalt_long1","mystreets:ramp_asphalt_long"},
+{"mystreets:ramp_asphalt_long2","mystreets:ramp_asphalt_long"},
+{"mystreets:ramp_asphalt_center_dashed1","mystreets:ramp_asphalt_center_dashed"},
+{"mystreets:ramp_asphalt_center_dashed2","mystreets:ramp_asphalt_center_dashed"},
+{"mystreets:ramp_asphalt_center_dashed_long1","mystreets:ramp_asphalt_center_dashed_long"},
+{"mystreets:ramp_asphalt_center_dashed_long2","mystreets:ramp_asphalt_center_dashed_long"},
+{"mystreets:ramp_asphalt_side_solid_left1","mystreets:ramp_asphalt_side_solid_left"},
+{"mystreets:ramp_asphalt_side_solid_left2","mystreets:ramp_asphalt_side_solid_left"},
+{"mystreets:ramp_asphalt_side_solid_left_long1","mystreets:ramp_asphalt_side_solid_left_long"},
+{"mystreets:ramp_asphalt_side_solid_left_long2","mystreets:ramp_asphalt_side_solid_left_long"},
+{"mystreets:ramp_asphalt_side_solid_right1","mystreets:ramp_asphalt_side_solid_right"},
+{"mystreets:ramp_asphalt_side_solid_right2","mystreets:ramp_asphalt_side_solid_right"},
+{"mystreets:ramp_asphalt_side_solid_right_long1","mystreets:ramp_asphalt_side_solid_right_long"},
+{"mystreets:ramp_asphalt_side_solid_right_long2","mystreets:ramp_asphalt_side_solid_right_long"},
+{"mystreets:ramp_asphalt_center_solid1","mystreets:ramp_asphalt_center_solid"},
+{"mystreets:ramp_asphalt_center_solid2","mystreets:ramp_asphalt_center_solid"},
+{"mystreets:ramp_asphalt_center_solid_long1","mystreets:ramp_asphalt_center_solid_long"},
+{"mystreets:ramp_asphalt_center_solid_long2","mystreets:ramp_asphalt_center_solid_long"},
+{"mystreets:ramp_asphalt_center_solid_dashed1","mystreets:ramp_asphalt_center_solid_dashed"},
+{"mystreets:ramp_asphalt_center_solid_dashed2","mystreets:ramp_asphalt_center_solid_dashed"},
+{"mystreets:ramp_asphalt_center_solid_dashed_long1","mystreets:ramp_asphalt_center_solid_dashed_long"},
+{"mystreets:ramp_asphalt_center_solid_dashed_long2","mystreets:ramp_asphalt_center_solid_dashed_long"},
+{"mystreets:ramp_asphalt_center_double_solid1","mystreets:ramp_asphalt_center_double_solid"},
+{"mystreets:ramp_asphalt_center_double_solid2","mystreets:ramp_asphalt_center_double_solid"},
+{"mystreets:ramp_asphalt_center_double_solid_long1","mystreets:ramp_asphalt_center_double_solid_long"},
+{"mystreets:ramp_asphalt_center_double_solid_long2","mystreets:ramp_asphalt_center_double_solid_long"},
 }
 for i in ipairs (asphalt_tab) do 
 local existing = asphalt_tab[i][1]
@@ -60,17 +87,12 @@ local repair = asphalt_tab[i][2]
 	   minetest.set_node({x=pos.x, y=pos.y-1, z=pos.z}, {name = repair, param2 = nodeu.param2})	
 	end
 	timer:start(3)	
-
 end
 end
 })
-
-
-
-
-
 minetest.register_craft({
 	type = "shapeless",
-	output = "mystreets:road_tar 20",
+	output = "mystreets:road_tar 50",
 	recipe ={"myoil:tar"},
 })
+
