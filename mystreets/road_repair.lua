@@ -3,6 +3,7 @@
 minetest.register_node("mystreets:road_tar", {
 	description = "Road Tar",
 	inventory_image = "mystreets_road_tar.png",
+	wield_image = "mystreets_road_tar.png",
 	tiles = {"mystreets_tar.png"},
 	drawtype = "nodebox",
 	paramtype = "light",

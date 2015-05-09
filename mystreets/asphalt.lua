@@ -1,3 +1,37 @@
+local fade = 86400.0 --time for fading
+local fadec = 150 -- chance of fading
+
+local asphalt_tab = {
+{"mystreets:asphalt1","mystreets:asphalt"},
+{"mystreets:asphalt_center_dashed1","mystreets:asphalt_center_dashed"},
+{"mystreets:asphalt_center_solid1","mystreets:asphalt_center_solid"},
+{"mystreets:asphalt_center_solid_dashed1","mystreets:asphalt_center_solid_dashed"},
+{"mystreets:asphalt_center_solid_double1","mystreets:asphalt_center_solid_double"},
+{"mystreets:asphalt_center_corner_single1","mystreets:asphalt_center_corner_single"},
+{"mystreets:asphalt_center_corner_double1","mystreets:asphalt_center_corner_double"},
+{"mystreets:asphalt_side_dashed1","mystreets:asphalt_side_dashed"},
+{"mystreets:asphalt_side_solid1","mystreets:asphalt_side_solid"},
+{"mystreets:asphalt_ocorner1","mystreets:asphalt_ocorner"},
+{"mystreets:asphalt_icorner1","mystreets:asphalt_icorner"},
+{"mystreets:ramp_asphalt1","mystreets:ramp_asphalt"},
+{"mystreets:ramp_asphalt_long1","mystreets:ramp_asphalt_long"},
+{"mystreets:ramp_asphalt_center_dashed1","mystreets:ramp_asphalt_center_dashed"},
+{"mystreets:ramp_asphalt_center_dashed_long1","mystreets:ramp_asphalt_center_dashed_long"},
+{"mystreets:ramp_asphalt_side_solid_left1","mystreets:ramp_asphalt_side_solid_left"},
+{"mystreets:ramp_asphalt_side_solid_left_long1","mystreets:ramp_asphalt_side_solid_left_long"},
+{"mystreets:ramp_asphalt_side_solid_right1","mystreets:ramp_asphalt_side_solid_right"},
+{"mystreets:ramp_asphalt_side_solid_right_long1","mystreets:ramp_asphalt_side_solid_right_long"},
+{"mystreets:ramp_asphalt_center_solid1","mystreets:ramp_asphalt_center_solid"},
+{"mystreets:ramp_asphalt_center_solid_long1","mystreets:ramp_asphalt_center_solid_long"},
+{"mystreets:ramp_asphalt_center_solid_dashed1","mystreets:ramp_asphalt_center_solid_dashed"},
+{"mystreets:ramp_asphalt_center_solid_dashed_long1","mystreets:ramp_asphalt_center_solid_dashed_long"},
+{"mystreets:ramp_asphalt_center_double_solid1","mystreets:ramp_asphalt_center_double_solid"},
+{"mystreets:ramp_asphalt_center_double_solid_long1","mystreets:ramp_asphalt_center_double_solid_long"},
+}
+for i in ipairs (asphalt_tab) do 
+local existing = asphalt_tab[i][1]
+local abms = asphalt_tab[i][2]
+
 local slope_cbox = {
 	type = "fixed",
 	fixed = {
@@ -11,14 +45,14 @@ local slope_cbox = {
 local slope_cbox_long = {
 	type = "fixed",
 	fixed = {
-		{-0.5, -0.5,   -1.5,  0.5, -0.375, 0.5},  --  NodeBox1
-		{-0.5, -0.375, -1.25, 0.5, -0.25,  0.5},  --  NodeBox2
-		{-0.5, -0.25,  -1,    0.5, -0.125, 0.5},  --  NodeBox3
-		{-0.5, -0.125, -0.75, 0.5,  0,     0.5},  --  NodeBox4
-		{-0.5,  0,     -0.5,  0.5,  0.125, 0.5},  --  NodeBox5
-		{-0.5,  0.125, -0.25, 0.5,  0.25,  0.5},  --  NodeBox6
-		{-0.5,  0.25,   0,    0.5,  0.375, 0.5},  --  NodeBox7
-		{-0.5,  0.375,  0.25, 0.5,  0.5,   0.5},  --  NodeBox8
+		{-0.5, -0.5,   -1.5,  0.5, -0.375, 0.5}, 
+		{-0.5, -0.375, -1.25, 0.5, -0.25,  0.5},  
+		{-0.5, -0.25,  -1,    0.5, -0.125, 0.5},
+		{-0.5, -0.125, -0.75, 0.5,  0,     0.5}, 
+		{-0.5,  0,     -0.5,  0.5,  0.125, 0.5}, 
+		{-0.5,  0.125, -0.25, 0.5,  0.25,  0.5}, 
+		{-0.5,  0.25,   0,    0.5,  0.375, 0.5}, 
+		{-0.5,  0.375,  0.25, 0.5,  0.5,   0.5}, 
 	}
 }
 
@@ -48,19 +82,19 @@ minetest.register_node("mystreets:asphalt"..num, {
 
 minetest.register_alias("asphalt", "mystreets:asphalt")
 minetest.register_abm({
-	nodenames = {"mystreets:asphalt"},
-	interval = 86400.0,
-	chance = 20,
+	nodenames = {abms},
+	interval = fade,
+	chance = fadec,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt2", param2 = node.param2})
+		minetest.set_node(pos, {name = abms.."2", param2 = node.param2})
 	end,
 })
 minetest.register_abm({
-	nodenames = {"mystreets:asphalt2"},
-	interval = 86400.0,
-	chance = 20,
+	nodenames = {abms.."2"},
+	interval = fade,
+	chance = fadec,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt1", param2 = node.param2})
+		minetest.set_node(pos, {name = abms.."1", param2 = node.param2})
 	end,
 })
 
@@ -82,22 +116,6 @@ minetest.register_node("mystreets:asphalt_center_dashed"..num, {
 		groups = gro,
 		sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_dashed"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_dashed2", param2= node.param2})
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_dashed1", param2= node.param2})
-	end,
-})
 
 -- Asphalt block with center solid line
 
@@ -118,26 +136,6 @@ minetest.register_node("mystreets:asphalt_center_solid"..num, {
 		groups = gro,
 		sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid2", param2= node.param2})
-	end,
-})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid1", param2= node.param2})
-	end,
-})
-
-
-
-
 
 -- Asphalt block with center solid dashed line
 
@@ -158,25 +156,6 @@ minetest.register_node("mystreets:asphalt_center_solid_dashed"..num, {
 		groups = gro,
 		sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_dashed","mystreets:asphalt_center_solid_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_dashed2", param2= node.param2})
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_dashed1", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_dashed1", param2= node.param2})
-	end,
-})
-
 
 -- Asphalt block with center solid double line
 minetest.register_node("mystreets:asphalt_center_solid_double"..num, {
@@ -196,23 +175,6 @@ minetest.register_node("mystreets:asphalt_center_solid_double"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_double"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_double2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_double2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_double1", param2= node.param2})
-	end,
-})
 
 -- Asphalt block with center corner single line
 minetest.register_node("mystreets:asphalt_center_corner_single"..num, {
@@ -232,23 +194,6 @@ minetest.register_node("mystreets:asphalt_center_corner_single"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_straight"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_straight2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_solid_straight2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_solid_straight1", param2= node.param2})
-	end,
-})
 
 -- Asphalt block with center corner double line
 minetest.register_node("mystreets:asphalt_center_corner_double"..num, {
@@ -268,23 +213,6 @@ minetest.register_node("mystreets:asphalt_center_corner_double"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_corner_double"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_corner_double2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_center_corner_double2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_center_corner_double1", param2= node.param2})
-	end,
-})
 
 -- Asphalt block with side dashed line
 minetest.register_node("mystreets:asphalt_side_dashed"..num, {
@@ -304,23 +232,6 @@ minetest.register_node("mystreets:asphalt_side_dashed"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_side_dashed"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_side_dashed2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_side_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_side_dashed1", param2= node.param2})
-	end,
-})
 
 -- Asphalt block with side solid line
 minetest.register_node("mystreets:asphalt_side_solid"..num, {
@@ -340,23 +251,6 @@ minetest.register_node("mystreets:asphalt_side_solid"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_side_solid"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_side_solid2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_side_solid2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_side_solid1", param2= node.param2})
-	end,
-})
 
 -- Asphalt Outside Corner
 minetest.register_node("mystreets:asphalt_ocorner"..num, {
@@ -376,24 +270,6 @@ minetest.register_node("mystreets:asphalt_ocorner"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_ocorner"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_ocorner2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_ocorner2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_ocorner1", param2= node.param2})
-	end,
-})
-
 
 -- Asphalt block Inside Corner
 minetest.register_node("mystreets:asphalt_icorner"..num, {
@@ -413,23 +289,6 @@ minetest.register_node("mystreets:asphalt_icorner"..num, {
 	groups = gro,
 	sounds = default.node_sound_stone_defaults(),
 	})
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_icorner"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_icorner2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:asphalt_icorner2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt_icorner1", param2= node.param2})
-	end,
-})
 
 -- HandiCap Parking Top Right
 	minetest.register_node("mystreets:asphalt_hc_tr", {
@@ -518,23 +377,6 @@ minetest.register_node("mystreets:ramp_asphalt"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt1", param2= node.param2})
-	end,
-})
 
 minetest.register_node("mystreets:ramp_asphalt_long"..num, {
 	description = "Asphalt Ramp Long "..desc,
@@ -549,23 +391,6 @@ minetest.register_node("mystreets:ramp_asphalt_long"..num, {
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
-})
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_long2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_long1", param2= node.param2})
-	end,
 })
 
 --Asphalt Center Dashed Ramp
@@ -583,23 +408,6 @@ minetest.register_node("mystreets:ramp_asphalt_center_dashed"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_dashed2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_dashed1", param2= node.param2})
-	end,
-})
 
 minetest.register_node("mystreets:ramp_asphalt_center_dashed_long"..num, {
 	description = "Asphalt Center Dashed Ramp Long "..desc,
@@ -614,23 +422,6 @@ minetest.register_node("mystreets:ramp_asphalt_center_dashed_long"..num, {
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
-})
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_dashed_long2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_dashed_long1", param2= node.param2})
-	end,
 })
 
 --Asphalt Side Solid left Ramp
@@ -648,23 +439,7 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_left"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_left"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_left2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_left1", param2= node.param2})
-	end,
-})
 minetest.register_node("mystreets:ramp_asphalt_side_solid_left_long"..num, {
 	description = "Asphalt Side Solid Ramp Left Long "..desc,
 	drawtype = "mesh",
@@ -678,23 +453,6 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_left_long"..num, {
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
-})
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_left_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_left_long2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_dashed_long_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_left_long1", param2= node.param2})
-	end,
 })
 
 --Asphalt Side Solid Ramp Right
@@ -712,23 +470,6 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_right"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_right"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_right2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_right2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_right1", param2= node.param2})
-	end,
-})
 
 minetest.register_node("mystreets:ramp_asphalt_side_solid_right_long"..num, {
 	description = "Asphalt Side Solid Ramp Right Long "..desc,
@@ -743,23 +484,6 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_right_long"..num, {
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
-})
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_right_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_right_long2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_side_solid_right_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_side_solid_right_long1", param2= node.param2})
-	end,
 })
 
 --Asphalt Center Solid Ramp 
@@ -777,23 +501,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid1", param2= node.param2})
-	end,
-})
 minetest.register_node("mystreets:ramp_asphalt_center_solid_long"..num, {
 	description = "Asphalt Center Solid Ramp Long "..desc,
 	drawtype = "mesh",
@@ -807,23 +515,6 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_long"..num, {
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
-})
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_long2", param2= node.param2})
-	end,
-})
-
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_long1", param2= node.param2})
-	end,
 })
 
 --Asphalt Center Solid and Dashed Ramp
@@ -841,23 +532,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_dashed"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_dashed"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_dashed2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_dashed2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_dashed1", param2= node.param2})
-	end,
-})
 minetest.register_node("mystreets:ramp_asphalt_center_solid_dashed_long"..num, {
 	description = "Asphalt Center Solid Dashed Ramp Long "..desc,
 	drawtype = "mesh",
@@ -872,23 +547,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_dashed_long"..num, {
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_dashed_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_dashed_long2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_solid_dashed_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_solid_dashed_long1", param2= node.param2})
-	end,
-})
 --Asphalt Center Double Solid Ramp 
 minetest.register_node("mystreets:ramp_asphalt_center_double_solid"..num, {
 	description = "Asphalt Center Double Solid Ramp "..desc,
@@ -904,23 +563,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_double_solid"..num, {
 	collision_box = slope_cbox,
 	selection_box = slope_cbox
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_double_solid"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_double_solid2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_double_solid2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_double_solid1", param2= node.param2})
-	end,
-})
 minetest.register_node("mystreets:ramp_asphalt_center_double_solid_long"..num, {
 	description = "Asphalt Center Double Solid Ramp Long "..desc,
 	drawtype = "mesh",
@@ -935,23 +578,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_double_solid_long"..num, {
 	collision_box = slope_cbox_long,
 	selection_box = slope_cbox_long
 })
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_double_solid_long"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_double_solid_long2", param2= node.param2})
-	end,
-})
 
-minetest.register_abm({
-	nodenames = {"mystreets:ramp_asphalt_center_double_solid_long2"},
-	interval = 86400.0,
-	chance = 20,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_double_solid_long1", param2= node.param2})
-	end,
-})
 minetest.register_node("mystreets:pothole", {
 	description = "Pot Hole",
 	drawtype = "nodebox",
@@ -994,9 +621,9 @@ minetest.register_node("mystreets:pothole", {
 	}
 })
 minetest.register_abm({
-	nodenames = {"mystreets:asphalt"..num},
+	nodenames = {"mystreets:asphalt1"},
 	interval = 86400.0,
-	chance = 50,
+	chance = 150,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		minetest.set_node(pos, {name = "mystreets:pothole", param2= node.param2})
 	end,
@@ -1050,4 +677,5 @@ minetest.register_abm({
 		minetest.set_node(pos, {name = "mystreets:potholeb", param2= node.param2})
 	end,
 })
+end
 end
