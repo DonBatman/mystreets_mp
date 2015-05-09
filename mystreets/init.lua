@@ -1,23 +1,27 @@
 dofile(minetest.get_modpath("mystreets").."/asphalt.lua")
 dofile(minetest.get_modpath("mystreets").."/asphalt_crafts.lua")
 dofile(minetest.get_modpath("mystreets").."/lights.lua")
---dofile(minetest.get_modpath("mystreets").."/mapgen.lua")
---dofile(minetest.get_modpath("mystreets").."/oil.lua")
 dofile(minetest.get_modpath("mystreets").."/posts.lua")
 dofile(minetest.get_modpath("mystreets").."/steel.lua")
 dofile(minetest.get_modpath("mystreets").."/ramps.lua")
---dofile(minetest.get_modpath("mystreets").."/streetsigns.lua")
 dofile(minetest.get_modpath("mystreets").."/traffic_light.lua")	
 dofile(minetest.get_modpath("mystreets").."/manholes.lua")
 dofile(minetest.get_modpath("mystreets").."/manholes_crafts.lua")	
 dofile(minetest.get_modpath("mystreets").."/sewerwater.lua")	
 print("mystreets mod loaded succesfully!")
 
+
+if minetest.get_modpath("myoil") then
+dofile(minetest.get_modpath("mystreets").."/road_repair.lua")
+end
+
+
 if minetest.get_modpath("myconcrete") then
 return nil
 else
 dofile(minetest.get_modpath("mystreets").."/concrete.lua")
 end
+
 
 
 if minetest.get_modpath("moreblocks") then

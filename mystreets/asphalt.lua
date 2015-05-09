@@ -43,6 +43,7 @@ minetest.register_node("mystreets:asphalt"..num, {
 		drop = "mystreets:asphalt",
 		groups = gro,
 		sounds = default.node_sound_stone_defaults(),
+
 	})
 
 minetest.register_alias("asphalt", "mystreets:asphalt")
@@ -51,7 +52,7 @@ minetest.register_abm({
 	interval = 86400.0,
 	chance = 20,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt2"})
+		minetest.set_node(pos, {name = "mystreets:asphalt2", param2 = node.param2})
 	end,
 })
 minetest.register_abm({
@@ -59,7 +60,7 @@ minetest.register_abm({
 	interval = 86400.0,
 	chance = 20,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "mystreets:asphalt1"})
+		minetest.set_node(pos, {name = "mystreets:asphalt1", param2 = node.param2})
 	end,
 })
 
@@ -951,6 +952,102 @@ minetest.register_abm({
 		minetest.set_node(pos, {name = "mystreets:ramp_asphalt_center_double_solid_long1", param2= node.param2})
 	end,
 })
-
-
+minetest.register_node("mystreets:pothole", {
+	description = "Pot Hole",
+	drawtype = "nodebox",
+	tiles = {
+	"mystreets_asphalt1.png^[colorize:white:10^mystreets_pothole_ol.png",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drop = "mystreets:asphalt",
+	groups = {cracky=2,not_in_creative_inventory=1},
+	sounds = default.node_sound_wood_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, -0.25},
+			{-0.5, -0.5, 0.25, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, -0.25, 0.5, 0.5},
+			{0.25, -0.5, -0.5, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, 0.1875, -0.0625, 0.5, 0.5},
+			{-0.5, -0.5, 0.0625, -0.1875, 0.5, 0.3125},
+			{-0.5, -0.5, -0.5, -0.0625, 0.5, -0.1875},
+			{-0.5, -0.5, -0.5, -0.1875, 0.5, -0.0625}, 
+			{0.0625, -0.5, -0.5, 0.5, 0.5, -0.1875},
+			{0.1875, -0.5, -0.5, 0.5, 0.5, -0.0625},
+			{0.1875, -0.5, 0.0625, 0.5, 0.5, 0.5},
+			{0.0625, -0.5, 0.1875, 0.5, 0.5, 0.5},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	}
+})
+minetest.register_abm({
+	nodenames = {"mystreets:asphalt"..num},
+	interval = 86400.0,
+	chance = 50,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:pothole", param2= node.param2})
+	end,
+})
+minetest.register_node("mystreets:potholeb", {
+	description = "Pot Hole",
+	drawtype = "nodebox",
+	tiles = {
+	"mystreets_asphalt1.png^[colorize:white:10^mystreets_pothole_olb.png",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	"mystreets_asphalt1.png^[colorize:white:10",
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	drop = "mystreets:asphalt",
+	groups = {cracky=2,not_in_creative_inventory=1},
+	sounds = default.node_sound_wood_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5}, 
+			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, -0.4375}, 
+			{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5}, 
+			{-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, -0.125, 0.5, -0.25},
+			{-0.5, -0.5, -0.5, -0.25, 0.5, -0.125},
+			{-0.5, -0.5, 0.1875, -0.3125, 0.5, 0.5},
+			{-0.5, -0.5, 0.3125, -0.1875, 0.5, 0.5},
+			{0.375, -0.5, -0.5, 0.5, 0.5, 0},
+			{0.25, -0.5, -0.5, 0.5, 0.5, -0.1875},
+			{0.0625, -0.5, -0.5, 0.5, 0.5, -0.3125},
+			{0.3125, -0.5, 0.3125, 0.5, 0.5, 0.5},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		}
+	}
+})
+minetest.register_abm({
+	nodenames = {"mystreets:pothole"},
+	interval = 86400.0,
+	chance = 150,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		minetest.set_node(pos, {name = "mystreets:potholeb", param2= node.param2})
+	end,
+})
 end
