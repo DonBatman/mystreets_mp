@@ -1,5 +1,5 @@
-local fade = 86400.0 --time for fading
-local fadec = 150 -- chance of fading
+local fade = 172800.0 --time for fading
+local fadec = 200 -- chance of fading
 
 local asphalt_tab = {
 {"mystreets:asphalt1","mystreets:asphalt"},
@@ -77,6 +77,7 @@ minetest.register_node("mystreets:asphalt"..num, {
 		drop = "mystreets:asphalt",
 		groups = gro,
 		sounds = default.node_sound_stone_defaults(),
+		on_place = minetest.rotate_node,
 
 	})
 
