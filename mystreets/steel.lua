@@ -1,7 +1,7 @@
 -- Galvanized steel block
 	minetest.register_node("mystreets:galvanized_steel", {
 		description = "Galvanized steel",
-		tile_images = {"mystreets_galvanized_steel.png"},
+		tiles = {"mystreets_galvanized_steel.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -41,20 +41,26 @@ minetest.register_craft({
 -- Truss
 	minetest.register_node("mystreets:truss", {
 		description = "Truss",
-		tile_images = {"mystreets_truss.png"},
+		tiles = {"mystreets_truss.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		groups = {cracky = 2},
 		node_box = {
 			type = "fixed",
 			fixed = {
-				{1/2, -1/2, -1/2, 1/2, 1/2, 1/2},
-				{-1/2, 1/2, -1/2, 1/2, 1/2, 1/2},
-				{-1/2, -1/2, 1/2, 1/2, 1/2, 1/2},
-				{-1/2, -1/2, -1/2, -1/2, 1/2, 1/2},
-				{-1/2, -1/2, -1/2, 1/2, -1/2, 1/2},
-				{-1/2, -1/2, -1/2, 1/2, 1/2, -1/2}
-			}
+			{-0.5, -0.5, 0.375, -0.375, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, -0.375, 0.5, -0.375},
+			{0.375, -0.5, -0.5, 0.5, 0.5, -0.375},
+			{0.375, -0.5, 0.375, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, 0.375, 0.5, -0.375, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, -0.375, -0.375},
+			{-0.5, -0.5, -0.5, -0.375, -0.375, 0.5},
+			{0.375, -0.5, -0.5, 0.5, -0.375, 0.5},
+			{-0.5, 0.375, 0.4375, 0.5, 0.5, 0.5},
+			{-0.5, 0.375, -0.5, 0.5, 0.5, -0.375},
+			{-0.5, 0.375, -0.5, -0.375, 0.5, 0.5},
+			{0.375, 0.4375, -0.5, 0.5, 0.5, 0.5},
+		}
 		},
 		selection_box = {
 			type = "fixed",
@@ -91,7 +97,7 @@ minetest.register_craft({
 
 minetest.register_node("mystreets:manhole_cover_closed", {
 		description = "Manhole cover",
-		tile_images = {
+		tiles = {
 			"mystreets_manhole_cover_top_bottom.png",
 			"mystreets_manhole_cover_top_bottom.png",
 			"mystreets_manhole_cover_side.png",
@@ -128,7 +134,7 @@ minetest.register_node("mystreets:manhole_cover_closed", {
 	})
 
 	minetest.register_node("mystreets:manhole_cover_opened", {
-		tile_images = {
+		tiles = {
 			"mystreets_manhole_cover_side.png",
 			"mystreets_manhole_cover_side.png",
 			"mystreets_manhole_cover_side.png",
@@ -165,7 +171,7 @@ minetest.register_node("mystreets:manhole_cover_closed", {
 	})
 minetest.register_node("mystreets:grate", {
 	description = "Grate",
-	tile_images = {
+	tiles = {
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",

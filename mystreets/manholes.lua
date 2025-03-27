@@ -1,7 +1,7 @@
 
 minetest.register_node("mystreets:manhole", {
 	description = "Manhole",
-	tile_images = {
+	tiles = {
 			"mystreets_manhole_top_closed.png",
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",
@@ -71,7 +71,7 @@ minetest.register_node("mystreets:manhole", {
 --Manhole open
 minetest.register_node("mystreets:manhole_open", {
 	description = "Manhole Open",
-	tile_images = {
+	tiles = {
 			"mystreets_manhole_top_closed.png",
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",
@@ -148,7 +148,7 @@ minetest.register_node("mystreets:manhole_open", {
 --Manhole shaft
 minetest.register_node("mystreets:manhole_shaft", {
 	description = "Manhole Open",
-	tile_images = {
+	tiles = {
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",
 			"mystreets_concrete.png",

@@ -39,7 +39,7 @@ end
 -- Asphalt block
 	minetest.register_node("misc:asphalt", {
 		description = "Asphalt",
-		tile_images = {"misc_asphalt.png"},
+		tiles = {"misc_asphalt.png"},
 		drawtype = "normal",
 		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
@@ -49,7 +49,7 @@ minetest.register_alias("asphalt", "misc:asphalt")
 -- Light Asphalt block
 	minetest.register_node("misc:light_asphalt", {
 		description = "Grey Asphalt",
-		tile_images = {"misc_light_asphalt.png"},
+		tiles = {"misc_light_asphalt.png"},
 		drawtype = "normal",
 		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
@@ -59,7 +59,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Concrete block
 	minetest.register_node("misc:concrete", {
 		description = "Concrete",
-		tile_images = {"misc_concrete.png"},
+		tiles = {"misc_concrete.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -67,7 +67,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 	})
 	minetest.register_node("misc:concrete_tile", {
 		description = "Concrete Tile",
-		tile_images = {"misc_concrete_tile.png"},
+		tiles = {"misc_concrete_tile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -75,7 +75,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 	})
 	minetest.register_node("misc:concrete_splitstone", {
 		description = "Concrete Splitstone",
-		tile_images = {"misc_concrete_splitstone.png"},
+		tiles = {"misc_concrete_splitstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -100,7 +100,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Galvanized steel block
 	minetest.register_node("misc:galvanized_steel", {
 		description = "Galvanized steel",
-		tile_images = {"misc_galvanized_steel.png"},
+		tiles = {"misc_galvanized_steel.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -108,7 +108,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 	})
 	minetest.register_node("misc:galvanized_steel_tile", {
 		description = "Galvanized steel tile",
-		tile_images = {"misc_galvanized_steel_tile.png"},
+		tiles = {"misc_galvanized_steel_tile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -116,7 +116,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 	})
 	minetest.register_node("misc:galvanized_steel_splitstone", {
 		description = "Galvanized steel splitstone",
-		tile_images = {"misc_galvanized_steel_splitstone.png"},
+		tiles = {"misc_galvanized_steel_splitstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -141,7 +141,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center dashed line
 	minetest.register_node("misc:asphalt_center_dashed", {
 		description = "Asphalt with center dashed line",
-		tile_images = {
+		tiles = {
 			"misc_asphalt_center_dashed.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -159,7 +159,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center solid line
 	minetest.register_node("misc:asphalt_center_solid", {
 	description = "Asphalt with center solid line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_center_solid.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -177,7 +177,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center solid dashed line
 	minetest.register_node("misc:asphalt_center_solid_dashed", {
 	description = "Asphalt with center solid dashed line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_center_solid_dashed.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -195,7 +195,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center solid double line
 	minetest.register_node("misc:asphalt_center_solid_double", {
 	description = "Asphalt with center solid double line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_center_solid_double.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -213,7 +213,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center corner single line
 	minetest.register_node("misc:asphalt_center_corner_single", {
 	description = "Asphalt with center corner single line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_center_corner_single.png",
 			"misc_asphalt.png",
 			"misc_asphalt_center_solid.png",
@@ -231,7 +231,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with center corner double line
 	minetest.register_node("misc:asphalt_center_corner_double", {
 	description = "Asphalt with center corner double line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_center_corner_double.png",
 			"misc_asphalt.png",
 			"misc_asphalt_center_solid_double.png",
@@ -249,7 +249,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with side dashed line
 	minetest.register_node("misc:asphalt_side_dashed", {
 	description = "Asphalt with side dashed line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_side_dashed.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -267,7 +267,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with side solid line
 	minetest.register_node("misc:asphalt_side_solid", {
 	description = "Asphalt with side solid line",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_side_solid.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -285,7 +285,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with lines for inner edge
 	minetest.register_node("misc:asphalt_inner_edge", {
 	description = "Asphalt with solid line for inner edge",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_inner_edge.png",
 			"misc_asphalt.png",
 			"misc_asphalt_side_solid_inversed.png",
@@ -303,7 +303,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Asphalt block with lines for outer edge
 	minetest.register_node("misc:asphalt_outer_edge", {
 	description = "Asphalt with solid line for outer edge",
-	tile_images = {
+	tiles = {
 			"misc_asphalt_outer_edge.png",
 			"misc_asphalt.png",
 			"misc_asphalt.png",
@@ -321,7 +321,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Concrete seperating wall
 	minetest.register_node("misc:precast_concrete_seperating_wall", {
 		description = "Precast concrete seperating wall",
-		tile_images = {"misc_concrete.png"},
+		tiles = {"misc_concrete.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -350,7 +350,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Concrete cylinder
 	minetest.register_node("misc:precast_concrete_cylinder", {
 		description = "Precast concrete cylinder",
-		tile_images = {"misc_concrete.png"},
+		tiles = {"misc_concrete.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -380,7 +380,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Truss
 	minetest.register_node("misc:truss", {
 		description = "Truss",
-		tile_images = {"misc_truss.png"},
+		tiles = {"misc_truss.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		groups = {cracky = 2},
@@ -404,7 +404,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Wire rope safety barrier
 	minetest.register_node("misc:wire_rope_safety_barrier", {
 		description = "Wire rope safety barrier",
-		tile_images = {
+		tiles = {
 			"misc_galvanized_steel.png",
 			"misc_galvanized_steel.png",
 			"misc_galvanized_steel.png",
@@ -451,7 +451,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 
 	for i = 1, 3 do
 		minetest.register_node("misc:wire_rope_safety_barrier_displacement_"..tostring(i), {
-			tile_images = {
+			tiles = {
 				"misc_galvanized_steel.png",
 				"misc_galvanized_steel.png",
 				"[combine:32x32:0,"..tostring(i * 8).."=misc_galvanized_steel.png:0,"..tostring(i * 8 - 32).."=misc_galvanized_steel.png",
@@ -497,7 +497,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Cable barrier terminal
 	minetest.register_node("misc:cable_barrier_terminal", {
 		description = "Cable barrier terminal",
-		tile_images = {
+		tiles = {
 			"misc_galvanized_steel.png",
 			"misc_galvanized_steel.png",
 			"misc_galvanized_steel.png",
@@ -552,7 +552,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 
 	for i = 1, 3 do
 		minetest.register_node("misc:cable_barrier_terminal_displacement_"..tostring(i), {
-			tile_images = {
+			tiles = {
 				"misc_galvanized_steel.png",
 				"misc_galvanized_steel.png",
 				"[combine:32x32:0,"..tostring(i * 8).."=misc_galvanized_steel.png:0,"..tostring(i * 8 - 32).."=misc_galvanized_steel.png",
@@ -606,7 +606,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Drainage channel grating
 	minetest.register_node("misc:drainage_channel_grating", {
 		description = "Sewer drain",
-		tile_images = {
+		tiles = {
 			"misc_drainage_channel_grating.png",
 			"misc_drainage_channel_grating.png",
 			"misc_galvanized_steel.png",
@@ -631,7 +631,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 -- Corrugated guide rail
 	minetest.register_node("misc:corrugated_guide_rail", {
 		description = "Corrugated guide rail",
-		tile_images = {
+		tiles = {
 			"misc_galvanized_steel.png",
 			"misc_galvanized_steel.png",
 			"misc_corrugated_guide_rail_side.png",
@@ -678,7 +678,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 
 	for i = 1, 3 do
 		minetest.register_node("misc:corrugated_guide_rail_displacement_"..tostring(i), {
-			tile_images = {
+			tiles = {
 				"misc_galvanized_steel.png",
 				"misc_galvanized_steel.png",
 				"[combine:32x32:0,"..tostring(i * 8).."=misc_corrugated_guide_rail_side.png:0,"..tostring(i * 8 - 32).."=misc_corrugated_guide_rail_side.png",
@@ -723,7 +723,7 @@ minetest.register_alias("grey_asphalt", "misc:light_asphalt")
 
 minetest.register_node("misc:manhole_cover_closed", {
 		description = "Manhole cover",
-		tile_images = {
+		tiles = {
 			"misc_manhole_cover_top_bottom.png",
 			"misc_manhole_cover_top_bottom.png",
 			"misc_manhole_cover_side.png",
@@ -760,7 +760,7 @@ minetest.register_node("misc:manhole_cover_closed", {
 	})
 
 	minetest.register_node("misc:manhole_cover_opened", {
-		tile_images = {
+		tiles = {
 			"misc_manhole_cover_side.png",
 			"misc_manhole_cover_side.png",
 			"misc_manhole_cover_side.png",
@@ -799,7 +799,7 @@ minetest.register_node("misc:manhole_cover_closed", {
 -- Mossy bricks
 	minetest.register_node("misc:mossy_brick", {
 		description = "Moss covered bricks",
-		tile_images = {"misc_mossy_brick.png"},
+		tiles = {"misc_mossy_brick.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -808,7 +808,7 @@ minetest.register_node("misc:manhole_cover_closed", {
 	})
 	minetest.register_node("misc:mossy_stone", {
 		description = "Moss covered stone",
-		tile_images = {"misc_mossy_stone.png"},
+		tiles = {"misc_mossy_stone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -817,7 +817,7 @@ minetest.register_node("misc:manhole_cover_closed", {
 	})
 	minetest.register_node("misc:mossy_stone_tile", {
 		description = "Moss covered stone tile",
-		tile_images = {"misc_mossy_stone_tile.png"},
+		tiles = {"misc_mossy_stone_tile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -826,7 +826,7 @@ minetest.register_node("misc:manhole_cover_closed", {
 	})
 	minetest.register_node("misc:mossy_stone_splitstone", {
 		description = "Moss Covered Splitstone",
-		tile_images = {"misc_mossy_stone_splitstone.png"},
+		tiles = {"misc_mossy_stone_splitstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -937,7 +937,7 @@ minetest.register_node("misc:ladder_tin", {
 -- Tan Stone
 	minetest.register_node("misc:tanstone", {
 		description = "Tan Stone",
-		tile_images = {"misc_tanstone.png"},
+		tiles = {"misc_tanstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -946,7 +946,7 @@ minetest.register_node("misc:ladder_tin", {
 	})
 	minetest.register_node("misc:tanstone_splittile", {
 		description = "Split Tan Stone Tile",
-		tile_images = {"misc_tanstone_splittile.png"},
+		tiles = {"misc_tanstone_splittile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -955,7 +955,7 @@ minetest.register_node("misc:ladder_tin", {
 	})
 	minetest.register_node("misc:tanstone_tile", {
 		description = "Tan Stone Tile",
-		tile_images = {"misc_tanstone_tile.png"},
+		tiles = {"misc_tanstone_tile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -964,7 +964,7 @@ minetest.register_node("misc:ladder_tin", {
 	})
 	minetest.register_node("misc:tanstone_bricks", {
 		description = "Tan Stone Bricks",
-		tile_images = {"misc_tanstone_bricks.png"},
+		tiles = {"misc_tanstone_bricks.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -997,7 +997,7 @@ minetest.register_node("misc:ladder_tin", {
 --gray stone
 	minetest.register_node("misc:gray_sandstone", {
 		description = "Gray Sandstone",
-		tile_images = {"misc_gray_sandstone.png"},
+		tiles = {"misc_gray_sandstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -1006,7 +1006,7 @@ minetest.register_node("misc:ladder_tin", {
 	})
 	minetest.register_node("misc:gray_sandstone_tile", {
 		description = "Gray Sandstone Tile",
-		tile_images = {"misc_gray_sandstone_tile.png"},
+		tiles = {"misc_gray_sandstone_tile.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -1015,7 +1015,7 @@ minetest.register_node("misc:ladder_tin", {
 	})
 	minetest.register_node("misc:gray_sandstone_splitstone", {
 		description = "Gray Sandstone Splitstone",
-		tile_images = {"misc_gray_sandstone_splitstone.png"},
+		tiles = {"misc_gray_sandstone_splitstone.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -1027,7 +1027,7 @@ minetest.register_node("misc:ladder_tin", {
 
 	minetest.register_node("misc:clean_copper", {
 		description = "Clean Copper",
-		tile_images = {"misc_cleancopper.png"},
+		tiles = {"misc_cleancopper.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -1041,7 +1041,7 @@ minetest.register_node("misc:ladder_tin", {
 
 	minetest.register_node("misc:green_copper", {
 		description = "Green Copper",
-		tile_images = {"misc_greencopper.png"},
+		tiles = {"misc_greencopper.png"},
 		drawtype = "normal",
 		paramtype = "light",
 		paramtype2 = "facedir",

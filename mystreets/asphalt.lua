@@ -1,4 +1,4 @@
-local fade = 172800.0 --time for fading
+local fade = 172.0 --time for fading
 local fadec = 200 -- chance of fading
 
 local asphalt_tab = {
@@ -56,11 +56,11 @@ local slope_cbox_long = {
 	}
 }
 
-local asphalt_tab = { --num, desc, imgnum, gro
-{"","","","",{cracky = 1}},
-{"2","2","^[colorize:white:10",{cracky = 1, not_in_creative_inventory = 1}},
-{"1","1","^[colorize:white:20",{cracky = 1, not_in_creative_inventory = 1}},
-}
+local asphalt_tab = { --num, desc, imgnum, group
+					{"","","","",{cracky = 1}},
+					{"2","2","^[colorize:white:10",{cracky = 1, not_in_creative_inventory = 1}},
+					{"1","1","^[colorize:white:20",{cracky = 1, not_in_creative_inventory = 1}},
+					}
 for i in ipairs (asphalt_tab) do
 	local num = asphalt_tab[i][1]
 	local desc = asphalt_tab[i][2]
@@ -69,16 +69,14 @@ for i in ipairs (asphalt_tab) do
 
 
 -- Asphalt block
-minetest.register_node("mystreets:asphalt"..num, {
+core.register_node("mystreets:asphalt"..num, {
 		description = "Asphalt "..desc,
-		tile_images = {"mystreets_asphalt3.png"..imgnum},
+		tiles = {"mystreets_asphalt3.png"..imgnum},
 		drawtype = "normal",
 		paramtype = "light",
 		drop = "mystreets:asphalt",
-		groups = gro,
-		sounds = default.node_sound_stone_defaults(),
-		on_place = minetest.rotate_node,
-
+		groups = {cracky = 1},
+--		sounds = default.node_sound_stone_defaults(),
 	})
 
 minetest.register_alias("asphalt", "mystreets:asphalt")
@@ -102,7 +100,7 @@ minetest.register_abm({
 -- Asphalt block with center dashed line
 minetest.register_node("mystreets:asphalt_center_dashed"..num, {
 		description = "Asphalt with center dashed line "..desc,
-		tile_images = {
+		tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_dashed_straight.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_dashed_straight.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -114,7 +112,7 @@ minetest.register_node("mystreets:asphalt_center_dashed"..num, {
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = "mystreets:asphalt_center_dashed",
-		groups = gro,
+		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -122,7 +120,7 @@ minetest.register_node("mystreets:asphalt_center_dashed"..num, {
 
 minetest.register_node("mystreets:asphalt_center_solid"..num, {
 		description = "Asphalt with center solid line "..desc,
-		tile_images = {
+		tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -134,7 +132,7 @@ minetest.register_node("mystreets:asphalt_center_solid"..num, {
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = "mystreets:asphalt_center_solid",
-		groups = gro,
+		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -142,7 +140,7 @@ minetest.register_node("mystreets:asphalt_center_solid"..num, {
 
 minetest.register_node("mystreets:asphalt_center_solid_dashed"..num, {
 		description = "Asphalt with center solid dashed "..desc,
-		tile_images = {
+		tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_dashed.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_dashed.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -154,14 +152,14 @@ minetest.register_node("mystreets:asphalt_center_solid_dashed"..num, {
 		paramtype = "light",
 		paramtype2 = "facedir",
 		drop = "mystreets:asphalt_center_solid_dashed",
-		groups = gro,
+		groups = {cracky = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block with center solid double line
 minetest.register_node("mystreets:asphalt_center_solid_double"..num, {
 	description = "Asphalt with center solid double line "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_double.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_double.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -173,14 +171,14 @@ minetest.register_node("mystreets:asphalt_center_solid_double"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 		drop = "mystreets:asphalt_center_solid_double",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block with center corner single line
 minetest.register_node("mystreets:asphalt_center_corner_single"..num, {
 	description = "Asphalt with center corner single line "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_corner.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_corner.png^[transformR90"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_straight.png"..imgnum,
@@ -192,14 +190,14 @@ minetest.register_node("mystreets:asphalt_center_corner_single"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_center_cormer_single",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block with center corner double line
 minetest.register_node("mystreets:asphalt_center_corner_double"..num, {
 	description = "Asphalt with center corner double line "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_corner_double.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_corner_double.png^[transformR90"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_yellow_solid_double.png"..imgnum,
@@ -211,14 +209,14 @@ minetest.register_node("mystreets:asphalt_center_corner_double"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_center_corner_double",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block with side dashed line
 minetest.register_node("mystreets:asphalt_side_dashed"..num, {
 	description = "Asphalt with side dashed line "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_white_dashed_straight.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_dashed_straight.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -230,14 +228,14 @@ minetest.register_node("mystreets:asphalt_side_dashed"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_side_dashed",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block with side solid line
 minetest.register_node("mystreets:asphalt_side_solid"..num, {
 	description = "Asphalt with side solid line "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_white_solid_straight.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_solid_straight.png"..imgnum,
 			"mystreets_asphalt3.png"..imgnum,
@@ -249,14 +247,14 @@ minetest.register_node("mystreets:asphalt_side_solid"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_side_solid",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt Outside Corner
 minetest.register_node("mystreets:asphalt_ocorner"..num, {
 	description = "Asphalt Outside Corner "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_white_solid_ocorner.png"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_solid_ocorner.png^[transformR90"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_solid_straight.png^[transformR180"..imgnum,
@@ -268,14 +266,14 @@ minetest.register_node("mystreets:asphalt_ocorner"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_ocorner",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- Asphalt block Inside Corner
 minetest.register_node("mystreets:asphalt_icorner"..num, {
 	description = "Asphalt Inside Corner "..desc,
-	tile_images = {
+	tiles = {
 			"mystreets_asphalt3.png^mystreets_line_white_solid_icorner.png^[transformR90"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_solid_icorner.png^[transformR180"..imgnum,
 			"mystreets_asphalt3.png^mystreets_line_white_solid_straight.png"..imgnum,
@@ -287,14 +285,14 @@ minetest.register_node("mystreets:asphalt_icorner"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:asphalt_icorner",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_stone_defaults(),
 	})
 
 -- HandiCap Parking Top Right
 	minetest.register_node("mystreets:asphalt_hc_tr", {
 		description = "HandiCap Parking Top Right",
-		tile_images = {
+		tiles = {
 			"mystreets_hc_tr.png",
 			"mystreets_asphalt3.png",
 			"mystreets_asphalt3.png",
@@ -312,7 +310,7 @@ minetest.register_node("mystreets:asphalt_icorner"..num, {
 -- HandiCap Parking Bottom Left
 	minetest.register_node("mystreets:asphalt_hc_bl", {
 		description = "HandiCap Parking Bottom Left",
-		tile_images = {
+		tiles = {
 			"mystreets_hc_bl.png",
 			"mystreets_asphalt3.png",
 			"mystreets_asphalt3.png",
@@ -330,7 +328,7 @@ minetest.register_node("mystreets:asphalt_icorner"..num, {
 -- HandiCap Parking Bottom Right
 	minetest.register_node("mystreets:asphalt_hc_br", {
 		description = "HandiCap Parking Bottom Right",
-		tile_images = {
+		tiles = {
 			"mystreets_hc_br.png",
 			"mystreets_asphalt3.png",
 			"mystreets_asphalt3.png",
@@ -348,7 +346,7 @@ minetest.register_node("mystreets:asphalt_icorner"..num, {
 -- HandiCap Parking Top Left
 	minetest.register_node("mystreets:asphalt_hc_tl", {
 		description = "HandiCap Parking Top Left",
-		tile_images = {
+		tiles = {
 			"mystreets_hc_tl.png",
 			"mystreets_asphalt3.png",
 			"mystreets_asphalt3.png",
@@ -372,7 +370,7 @@ minetest.register_node("mystreets:ramp_asphalt"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -387,7 +385,7 @@ minetest.register_node("mystreets:ramp_asphalt_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -403,7 +401,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_dashed"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_dashed",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -418,7 +416,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_dashed_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_dashed_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -434,7 +432,7 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_left"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_side_solid_left",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -449,7 +447,7 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_left_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_side_solid_left_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -465,7 +463,7 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_right"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_side_solid_right",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -480,7 +478,7 @@ minetest.register_node("mystreets:ramp_asphalt_side_solid_right_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_side_solid_right_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -496,7 +494,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_solid",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -511,7 +509,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_solid_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -527,7 +525,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_dashed"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_solid_dashed",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -542,7 +540,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_solid_dashed_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_solid_dashed_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -558,7 +556,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_double_solid"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_double_solid",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox,
@@ -573,7 +571,7 @@ minetest.register_node("mystreets:ramp_asphalt_center_double_solid_long"..num, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "mystreets:ramp_asphalt_center_double_solid_long",
-	groups = gro,
+	groups = {cracky = 1},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 	collision_box = slope_cbox_long,
@@ -680,3 +678,75 @@ minetest.register_abm({
 })
 end
 end
+
+--Turn Arrow Left
+	minetest.register_node("mystreets:asphalt_turn_arrow_left", {
+		description = "Left Turn Arrow",
+		tiles = {
+			"mystreets_asphalt_turn_arrow_left.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+
+--Turn Arrow Right
+	minetest.register_node("mystreets:asphalt_turn_arrow_right", {
+		description = "Right Turn Arrow",
+		tiles = {
+			"mystreets_asphalt_turn_arrow_right.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+
+--Parking
+	minetest.register_node("mystreets:asphalt_parking", {
+		description = "Parking",
+		tiles = {
+			"mystreets_asphalt_parking.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})
+
+--Yellow Arrows
+	minetest.register_node("mystreets:asphalt_yellow_arrows", {
+		description = "Yellow Arrows",
+		tiles = {
+			"mystreets_asphalt_yellow_arrow.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png",
+			"mystreets_asphalt.png"
+		},
+		drawtype = "normal",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {cracky = 1},
+		sounds = default.node_sound_stone_defaults(),
+	})

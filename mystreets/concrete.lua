@@ -91,7 +91,7 @@ minetest.register_craft({
 -- Concrete seperating wall
 	minetest.register_node("mystreets:precast_concrete_seperating_wall", {
 		description = "Precast concrete seperating wall",
-		tile_images = {"mystreets_concrete.png"},
+		tiles = {"mystreets_concrete.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -128,7 +128,7 @@ minetest.register_craft({
 -- Concrete cylinder
 	minetest.register_node("mystreets:precast_concrete_cylinder", {
 		description = "Precast concrete cylinder",
-		tile_images = {"mystreets_concrete.png"},
+		tiles = {"mystreets_concrete.png"},
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
