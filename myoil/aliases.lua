@@ -1,6 +1,0 @@
-minetest.register_alias("mystreets:oil_flowing", 		"myoil:oil_flowing")
-minetest.register_alias("mystreets:oil_source", 		"myoil:oil_source")
-minetest.register_alias("mystreets:oil_barrel", 		"myoil:oil_barrel")
-minetest.register_alias("mystreets:tar", 			"myoil:tar")
-minetest.register_alias("mystreets:tar_barrel", 		"myoil:tar_barrel")
-minetest.register_alias("mystreets:bucket_oil", 		"myoil:bucket_oil")
