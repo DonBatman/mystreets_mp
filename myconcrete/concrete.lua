@@ -107,7 +107,7 @@ end,
 
 
 minetest.register_abm({
-	nodenames = {"myconcrete:"..mat.."3"},
+	nodenames = {"myconcrete:"..mat.."3",},
 	interval = 180.0,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
